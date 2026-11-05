@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- Optimizada para celulares (Mobile First: 360px a 430px) y adaptable a PC -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>⚽ ¡Estás convocado al cumpleaños de Hovik Gael!</title>
+  
+  <!-- Color temático para la barra del navegador móvil (Rojo España) -->
+  <meta name="theme-color" content="#C60B1E">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- ===============================================================
+       ETIQUETAS OPEN GRAPH (Para que el enlace se vea espectacular en WhatsApp)
+       IMPORTANTE: Al publicar tu web en Netlify o GitHub Pages, reemplaza
+       "https://tu-invitacion.netlify.app" por la URL real de tu sitio.
+       WhatsApp requiere URLs absolutas para la imagen preview.jpg.
+       =============================================================== -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="⚽ ¡Estás convocado al cumpleaños de Hovik Gael!">
+  <meta property="og:description" content="Domingo, 22 de Noviembre · Carrera 7 # 13-36, Sibaté — ¡Toca para abrir tu invitación de La Roja!">
+  <meta property="og:image" content="https://duverneyfsm.github.io/prueba/preview.jpg">
+  <meta property="og:image:secure_url" content="https://duverneyfsm.github.io/prueba/preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://duverneyfsm.github.io/prueba/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Fonts: Bebas Neue (Títulos deportivos de impacto) y Montserrat (Textos legibles) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+
+  <!-- Librería de Confeti Liviana (Único script CDN permitido) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* ===============================================================
+       VARIABLES CSS Y PALETA DE COLORES OFICIAL DE LA ROJA
+       =============================================================== */
+    :root {
+      --rojo-espana: #C60B1E;
+      --rojo-oscuro: #8E0010;
+      --amarillo-espana: #FFC400;
+      --dorado: #D4AF37;
+      --dorado-brillo: #FFE885;
+      --azul-noche: #0B1B3F;
+      --azul-profundo: #050D1E;
+      --verde-cancha: #0B6623;
+      --verde-whatsapp: #25D366;
+      --verde-whatsapp-hover: #1EBE5D;
+      --blanco: #FFFFFF;
+      --gris-claro: #F3F4F6;
+      --gris-texto: #CBD5E1;
+      
+      --font-deportiva: 'Bebas Neue', sans-serif;
+      --font-texto: 'Montserrat', sans-serif;
+      
+      --sombra-dorada: 0 0 20px rgba(212, 175, 55, 0.45);
+      --sombra-roja: 0 10px 25px rgba(198, 11, 30, 0.4);
+      --borde-dorado: 1.5px solid rgba(212, 175, 55, 0.6);
+      --card-radius: 24px;
+    }
+
+    /* Reset básico */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--azul-profundo);
+      color: var(--blanco);
+      font-family: var(--font-texto);
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Fondo principal fijo con textura de noche de estadio */
+    .stadium-background {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(11, 27, 63, 0.4) 0%, rgba(5, 13, 30, 0.95) 100%),
+        url('fondo.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      will-change: transform;
+      transform-origin: center center;
+    }
+
+    /* Efecto Ken Burns suave al abrir la tarjeta */
+    .ken-burns {
+      animation: kenBurnsAnim 22s ease-in-out infinite alternate;
+    }
+
+    @keyframes kenBurnsAnim {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+      50% {
+        transform: scale(1.07) translate(-1.5%, -1%);
+      }
+      100% {
+        transform: scale(1.02) translate(1%, 0.5%);
+      }
+    }
+
+    /* Luces de reflector de estadio (Spotlights) */
+    .stadium-spotlights {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .spotlight {
+      position: absolute;
+      top: -120px;
+      width: 280px;
+      height: 700px;
+      background: radial-gradient(ellipse at top, rgba(255, 235, 150, 0.28) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 80%);
+      transform-origin: top center;
+      filter: blur(25px);
+    }
+
+    .spotlight-left {
+      left: 10%;
+      animation: sweepLeft 9s ease-in-out infinite alternate;
+    }
+
+    .spotlight-right {
+      right: 10%;
+      animation: sweepRight 9s ease-in-out infinite alternate;
+    }
+
+    @keyframes sweepLeft {
+      0% { transform: rotate(-25deg); opacity: 0.4; }
+      100% { transform: rotate(-5deg); opacity: 0.8; }
+    }
+
+    @keyframes sweepRight {
+      0% { transform: rotate(25deg); opacity: 0.4; }
+      100% { transform: rotate(5deg); opacity: 0.8; }
+    }
+
+    /* Partículas de destellos dorados */
+    .sparkle-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background-image: 
+        radial-gradient(1.5px 1.5px at 20% 30%, #FFC400, transparent),
+        radial-gradient(2px 2px at 40% 70%, #FFE885, transparent),
+        radial-gradient(1px 1px at 60% 20%, #FFFFFF, transparent),
+        radial-gradient(2px 2px at 80% 50%, #FFC400, transparent),
+        radial-gradient(1.5px 1.5px at 90% 80%, #D4AF37, transparent);
+      background-size: 300px 300px;
+      opacity: 0.6;
+    }
+
+    /* ===============================================================
+       PRELOADER (Balón 3D girando)
+       =============================================================== */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: radial-gradient(circle at center, var(--azul-noche) 0%, var(--azul-profundo) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+    }
+
+    #preloader.loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .soccer-ball-spinner {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 
+        0 0 30px rgba(255, 196, 0, 0.5),
+        inset -5px -5px 15px rgba(0, 0, 0, 0.35);
+      animation: spinBall 1.4s linear infinite;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .soccer-ball-spinner svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @keyframes spinBall {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .preloader-text {
+      font-family: var(--font-deportiva);
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: var(--amarillo-espana);
+      text-transform: uppercase;
+      text-shadow: 0 0 10px rgba(255, 196, 0, 0.5);
+    }
+
+    .preloader-subtext {
+      font-size: 0.82rem;
+      color: var(--gris-texto);
+      font-weight: 500;
+    }
+
+    /* ===============================================================
+       1. PORTADA A PANTALLA COMPLETA (Obligatoria para audio en móvil)
+       =============================================================== */
+    #portadaScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 20px 40px;
+      background: 
+        linear-gradient(180deg, rgba(11, 27, 63, 0.85) 0%, rgba(5, 13, 30, 0.88) 50%, rgba(198, 11, 30, 0.75) 100%),
+        url('fondo.jpg') center center / cover no-repeat;
+      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    #portadaScreen.hidden {
+      opacity: 0;
+      transform: scale(1.08);
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .portada-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(11, 27, 63, 0.75);
+      border: 1px solid var(--dorado);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--amarillo-espana);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      margin-top: 10px;
+    }
+
+    .portada-badge .star-icon {
+      color: var(--dorado-brillo);
+      font-size: 0.9rem;
+    }
+
+    .portada-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 380px;
+      margin: auto 0;
+    }
+
+    .portada-shield {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 15px rgba(255, 196, 0, 0.6));
+      animation: floatShield 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatShield {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    .portada-title-main {
+      font-family: var(--font-deportiva);
+      font-size: clamp(2.8rem, 11vw, 3.8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: linear-gradient(180deg, #FFFFFF 20%, var(--amarillo-espana) 70%, var(--dorado) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
+      margin-bottom: 6px;
+    }
+
+    .portada-subtitle {
+      font-family: var(--font-deportiva);
+      font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+      color: var(--amarillo-espana);
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .portada-description {
+      font-size: 0.92rem;
+      color: #E2E8F0;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 25px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+
+    .dorsal-chip {
+      display: inline-block;
+      background: var(--rojo-espana);
+      color: var(--amarillo-espana);
+      border: 1px solid var(--amarillo-espana);
+      font-family: var(--font-deportiva);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(198, 11, 30, 0.5);
+    }
+
+    /* BOTÓN LATIENTE: ABRIR INVITACIÓN */
+    .btn-abrir-portada {
+      width: 100%;
+      max-width: 320px;
+      padding: 16px 28px;
+      border-radius: 50px;
+      border: 2px solid var(--dorado-brillo);
+      background: linear-gradient(135deg, var(--amarillo-espana) 0%, var(--rojo-espana) 60%, var(--rojo-oscuro) 100%);
+      color: var(--blanco);
+      font-family: var(--font-deportiva);
+      font-size: 1.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 
+        0 8px 30px rgba(198, 11, 30, 0.6),
+        0 0 25px rgba(255, 196, 0, 0.7);
+      animation: pulseGlow 1.8s infinite;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-abrir-portada:active {
+      transform: scale(0.96);
+    }
+
+    .btn-abrir-portada .btn-icon {
+      font-size: 1.8rem;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 196, 0, 0.5), 0 8px 25px rgba(198, 11, 30, 0.5);
+      }
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 35px rgba(255, 196, 0, 0.85), 0 10px 35px rgba(198, 11, 30, 0.8);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 196, 0, 0.5), 0 8px 25px rgba(198, 11, 30, 0.5);
+      }
+    }
+
+    .portada-note {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* ===============================================================
+       2. TÚNEL DE SALIDA DE ESTADIO & DESTELLO DORADO
+       =============================================================== */
+    #tunnelOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 800;
+      display: flex;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    #tunnelOverlay.active {
+      visibility: visible;
+    }
+
+    .tunnel-gate {
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(180deg, #050d1a 0%, #0b1b3f 50%, #050d1a 100%);
+      transition: transform 1.25s cubic-bezier(0.75, 0, 0.15, 1);
+      position: relative;
+      box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .tunnel-gate-left {
+      border-right: 3px solid var(--dorado);
+      transform: translateX(0);
+    }
+
+    .tunnel-gate-right {
+      border-left: 3px solid var(--dorado);
+      transform: translateX(0);
+    }
+
+    #tunnelOverlay.opening .tunnel-gate-left {
+      transform: translateX(-100%);
+    }
+
+    #tunnelOverlay.opening .tunnel-gate-right {
+      transform: translateX(100%);
+    }
+
+    /* Destello dorado cegador (Champions Flash) */
+    #goldenFlash {
+      position: fixed;
+      inset: 0;
+      z-index: 850;
+      background: radial-gradient(circle at center, #FFFFFF 0%, rgba(255, 232, 133, 0.95) 30%, rgba(212, 175, 55, 0.7) 60%, transparent 95%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    #goldenFlash.flash-active {
+      animation: flashAnimation 1.3s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+    }
+
+    @keyframes flashAnimation {
+      0% { opacity: 0; transform: scale(0.6); }
+      30% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0; transform: scale(1.6); }
+    }
+
+    /* ===============================================================
+       CONTENEDOR PRINCIPAL DE LA TARJETA (Mobile-First 360-430px)
+       =============================================================== */
+    .main-wrapper {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 14px 100px;
+    }
+
+    .card-container {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      background: rgba(11, 27, 63, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--card-radius);
+      border: var(--borde-dorado);
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(212, 175, 55, 0.25);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Franja superior dorada y roja */
+    .card-top-banner {
+      background: linear-gradient(90deg, var(--rojo-espana) 0%, var(--amarillo-espana) 50%, var(--rojo-espana) 100%);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--dorado);
+    }
+
+    .top-banner-text {
+      font-family: var(--font-deportiva);
+      font-size: 1.15rem;
+      letter-spacing: 1.5px;
+      color: #050D1E;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stars-champions {
+      color: #050D1E;
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+    }
+
+    /* AFICHE HERO / POSTER CON LA ROJA Y LAMINE YAMAL */
+    .card-hero-media {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .card-hero-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .card-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 27, 63, 0.1) 0%, rgba(11, 27, 63, 0.6) 70%, rgba(11, 27, 63, 0.95) 100%);
+      pointer-events: none;
+    }
+
+    /* BADGE DE DORSAL 19 & CAMISETA */
+    .hero-dorsal-tag {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(11, 27, 63, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 50px;
+      border: 1px solid var(--amarillo-espana);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+
+    .dorsal-mini-badge {
+      font-family: var(--font-deportiva);
+      font-size: 1.3rem;
+      color: var(--amarillo-espana);
+      background: var(--rojo-espana);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--dorado-brillo);
+    }
+
+    .dorsal-tag-text {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--blanco);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* CUERPO DE LA TARJETA */
+    .card-body {
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* TITULAR DORSAL DEL CUMPLEAÑERO */
+    .player-title-section {
+      text-align: center;
+      position: relative;
+    }
+
+    .player-name-main {
+      font-family: var(--font-deportiva);
+      font-size: clamp(2.4rem, 9vw, 3.2rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blanco);
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+      margin-bottom: 6px;
+    }
+
+    /* Gran dorsal estilizado como camiseta de España */
+    .dorsal-age-wrapper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 10px 0;
+    }
+
+    .dorsal-big-number {
+      font-family: var(--font-deportiva);
+      font-size: 4.8rem;
+      line-height: 0.85;
+      color: var(--amarillo-espana);
+      background: linear-gradient(180deg, #FFFFFF 10%, var(--amarillo-espana) 50%, var(--dorado) 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 6px 12px rgba(198, 11, 30, 0.8));
+      position: relative;
+    }
+
+    .dorsal-age-text {
+      text-align: left;
+      font-family: var(--font-deportiva);
+      font-size: 1.7rem;
+      line-height: 1.05;
+      color: var(--blanco);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .dorsal-age-text span {
+      display: block;
+      font-size: 1.05rem;
+      color: var(--amarillo-espana);
+      font-family: var(--font-texto);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===============================================================
+       3. TEXTO DE LA CONVOCATORIA (Resaltado dinámico por frases)
+       =============================================================== */
+    .convocatoria-box {
+      background: rgba(5, 13, 30, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 16px;
+      padding: 18px 16px;
+      position: relative;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .convocatoria-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
+    }
+
+    .convocatoria-badge-title {
+      font-family: var(--font-deportiva);
+      font-size: 1.15rem;
+      color: var(--amarillo-espana);
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .convocatoria-live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #10B981;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10B981;
+      box-shadow: 0 0 8px #10B981;
+      animation: pulseDot 1.4s infinite;
+    }
+
+    @keyframes pulseDot {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    /* Párrafos de la convocatoria que se resaltan al leer */
+    .narracion-frase {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #E2E8F0;
+      font-weight: 500;
+      padding: 5px 8px;
+      border-radius: 8px;
+      transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .narracion-frase:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ESTILO CUANDO LA FRASE ESTÁ SIENDO LEÍDA */
+    .narracion-frase.activa {
+      background: linear-gradient(90deg, rgba(198, 11, 30, 0.4) 0%, rgba(255, 196, 0, 0.35) 100%);
+      color: #FFFFFF;
+      font-weight: 700;
+      border-left: 3px solid var(--amarillo-espana);
+      transform: translateX(4px);
+      box-shadow: 0 2px 12px rgba(255, 196, 0, 0.25);
+    }
+
+    /* ===============================================================
+       4. BLOQUES DE DATOS: FECHA, HORA, LUGAR (Ficha de partido)
+       =============================================================== */
+    .match-info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .info-card {
+      background: rgba(11, 27, 63, 0.65);
+      border: 1px solid rgba(255, 196, 0, 0.3);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .info-card:hover {
+      border-color: var(--amarillo-espana);
+      transform: translateY(-2px);
+    }
+
+    .info-icon-bubble {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--rojo-espana) 0%, var(--rojo-oscuro) 100%);
+      border: 1px solid var(--dorado);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .info-content {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--amarillo-espana);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--blanco);
+      line-height: 1.3;
+    }
+
+    .info-subvalue {
+      font-size: 0.8rem;
+      color: var(--gris-texto);
+      margin-top: 2px;
+    }
+
+    /* ===============================================================
+       5. CUENTA REGRESIVA EN VIVO (Cronómetro de Champions)
+       =============================================================== */
+    .countdown-section {
+      background: linear-gradient(180deg, rgba(198, 11, 30, 0.25) 0%, rgba(5, 13, 30, 0.8) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+
+    .countdown-title {
+      font-family: var(--font-deportiva);
+      font-size: 1.35rem;
+      color: var(--amarillo-espana);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .countdown-item {
+      background: rgba(11, 27, 63, 0.9);
+      border: 1px solid rgba(255, 196, 0, 0.35);
+      border-radius: 12px;
+      padding: 10px 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .countdown-number {
+      font-family: var(--font-deportiva);
+      font-size: 2.1rem;
+      line-height: 1;
+      color: var(--blanco);
+      letter-spacing: 1px;
+    }
+
+    .countdown-unit {
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--amarillo-espana);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    .match-day-alert {
+      display: none;
+      font-family: var(--font-deportiva);
+      font-size: 1.9rem;
+      color: var(--amarillo-espana);
+      letter-spacing: 1.5px;
+      animation: pulseGlow 1.5s infinite;
+      padding: 10px;
+    }
+
+    /* ===============================================================
+       6. SECCIÓN DE ACCIONES Y BOTONES GRANDES PARA PULGAR (Thumb-Friendly)
+       =============================================================== */
+    .actions-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .action-group-title {
+      font-family: var(--font-deportiva);
+      font-size: 1.25rem;
+      color: var(--amarillo-espana);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    /* BOTONES BASE */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-family: var(--font-texto);
+      font-size: 0.98rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s, filter 0.2s;
+      text-align: center;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Botón Cómo Llegar (Google Maps) */
+    .btn-maps {
+      background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+      color: var(--blanco);
+      border: 1px solid #60A5FA;
+      box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4);
+    }
+
+    /* Botón Secundario Waze */
+    .btn-waze {
+      background: rgba(11, 27, 63, 0.8);
+      color: #93C5FD;
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      min-height: 44px;
+      font-size: 0.88rem;
+      margin-top: -6px;
+    }
+
+    /* CAJA DE CONFIRMACIÓN DE ASISTENCIA WHATSAPP */
+    .confirmacion-card {
+      background: rgba(5, 13, 30, 0.8);
+      border: 1.5px solid rgba(37, 211, 102, 0.4);
+      border-radius: 18px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+
+    .form-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #E2E8F0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      height: 48px;
+      background: rgba(11, 27, 63, 0.95);
+      border: 1px solid rgba(255, 196, 0, 0.4);
+      border-radius: 10px;
+      padding: 0 14px;
+      color: var(--blanco);
+      font-family: var(--font-texto);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus, .form-select:focus {
+      border-color: var(--amarillo-espana);
+      box-shadow: 0 0 10px rgba(255, 196, 0, 0.4);
+    }
+
+    .form-select option {
+      background: var(--azul-noche);
+      color: var(--blanco);
+    }
+
+    /* Botón Confirmar Asistencia por WhatsApp */
+    .btn-whatsapp {
+      background: linear-gradient(135deg, var(--verde-whatsapp) 0%, #15803D 100%);
+      color: var(--blanco);
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      filter: brightness(1.08);
+    }
+
+    .confirm-deadline {
+      font-size: 0.76rem;
+      color: var(--amarillo-espana);
+      font-weight: 700;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    /* Botón Agregar al Calendario */
+    .btn-calendar {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(198, 11, 30, 0.3) 100%);
+      color: var(--amarillo-espana);
+      border: 1px solid var(--dorado);
+      font-size: 0.94rem;
+    }
+
+    /* FOOTER DE LA TARJETA */
+    .card-footer {
+      text-align: center;
+      padding-top: 10px;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    .card-footer-slogan {
+      font-family: var(--font-deportiva);
+      font-size: 1.45rem;
+      color: var(--amarillo-espana);
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 196, 0, 0.4);
+    }
+
+    .card-footer-sub {
+      font-size: 0.75rem;
+      color: var(--gris-texto);
+      margin-top: 4px;
+    }
+
+    /* ===============================================================
+       7. CONTROLES FLOTANTES (Música y Repetir Narración)
+       =============================================================== */
+    .floating-controls {
+      position: fixed;
+      bottom: 20px;
+      right: 16px;
+      z-index: 900;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .floating-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 50px;
+      background: rgba(11, 27, 63, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1.5px solid var(--dorado);
+      color: var(--amarillo-espana);
+      font-family: var(--font-texto);
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .floating-btn:active {
+      transform: scale(0.92);
+    }
+
+    .floating-btn.mini {
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .sound-bars-anim {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .sound-bar {
+      width: 3px;
+      background: var(--amarillo-espana);
+      border-radius: 3px;
+      animation: soundBarAnim 0.8s ease-in-out infinite alternate;
+    }
+
+    .sound-bar:nth-child(1) { height: 6px; animation-delay: 0.1s; }
+    .sound-bar:nth-child(2) { height: 14px; animation-delay: 0.3s; }
+    .sound-bar:nth-child(3) { height: 9px; animation-delay: 0.2s; }
+
+    .sound-muted .sound-bar {
+      animation: none !important;
+      height: 3px !important;
+      opacity: 0.4;
+    }
+
+    @keyframes soundBarAnim {
+      0% { height: 4px; }
+      100% { height: 14px; }
+    }
+
+    /* ===============================================================
+       ACCESIBILIDAD: PREFERS-REDUCED-MOTION
+       =============================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .ken-burns {
+        animation: none !important;
+      }
+      .btn-abrir-portada {
+        animation: none !important;
+      }
+      .stadium-spotlights {
+        display: none !important;
+      }
+    }
+
+    /* Optimización para pantallas grandes (PC / Tablets) */
+    @media (min-width: 768px) {
+      .main-wrapper {
+        padding: 40px 20px 100px;
+      }
+      .card-container {
+        max-width: 480px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ELEMENTOS DE AUDIO (Música de fondo en bucle) -->
+  <audio id="musicaFondo" loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- FONDO CON EFECTO DE ESTADIO -->
+  <div class="stadium-background" id="stadiumBg"></div>
+  <div class="stadium-spotlights">
+    <div class="spotlight spotlight-left"></div>
+    <div class="spotlight spotlight-right"></div>
+  </div>
+  <div class="sparkle-layer"></div>
+
+  <!-- PRELOADER CON BALÓN GIRANDO -->
+  <div id="preloader">
+    <div class="soccer-ball-spinner">
+      <svg viewBox="0 0 100 100">
+        <!-- Balón clásico de fútbol con hexágonos/pentágonos -->
+        <circle cx="50" cy="50" r="48" fill="#FFFFFF" stroke="#0B1B3F" stroke-width="3"/>
+        <polygon points="50,32 62,41 57,55 43,55 38,41" fill="#0B1B3F" />
+        <polygon points="50,12 59,18 56,26 44,26 41,18" fill="#0B1B3F" />
+        <polygon points="82,35 88,44 80,50 72,45 74,36" fill="#0B1B3F" />
+        <polygon points="70,76 76,85 68,91 60,86 62,77" fill="#0B1B3F" />
+        <polygon points="30,76 38,77 40,86 32,91 24,85" fill="#0B1B3F" />
+        <polygon points="18,35 26,36 28,45 20,50 12,44" fill="#0B1B3F" />
+        <!-- Costuras del balón -->
+        <line x1="50" y1="32" x2="50" y2="26" stroke="#0B1B3F" stroke-width="2.5" />
+        <line x1="62" y1="41" x2="74" y2="36" stroke="#0B1B3F" stroke-width="2.5" />
+        <line x1="57" y1="55" x2="62" y2="77" stroke="#0B1B3F" stroke-width="2.5" />
+        <line x1="43" y1="55" x2="38" y2="77" stroke="#0B1B3F" stroke-width="2.5" />
+        <line x1="38" y1="41" x2="26" y2="36" stroke="#0B1B3F" stroke-width="2.5" />
+      </svg>
+    </div>
+    <div class="preloader-text">CALENTANDO MOTORES...</div>
+    <div class="preloader-subtext">Selección Española · Convocatoria Oficial</div>
+  </div>
+
+  <!-- ===============================================================
+       1. PORTADA A PANTALLA COMPLETA (Obligatoria para audio)
+       =============================================================== -->
+  <section id="portadaScreen">
+    <div class="portada-badge">
+      <span class="star-icon">⭐</span>
+      <span>CONVOCATORIA OFICIAL RFEF</span>
+      <span class="star-icon">⭐</span>
+    </div>
+
+    <div class="portada-center">
+      <!-- Escudo estilizado España / Campeones -->
+      <svg class="portada-shield" viewBox="0 0 100 120">
+        <defs>
+          <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFC400" />
+            <stop offset="50%" stop-color="#C60B1E" />
+            <stop offset="100%" stop-color="#0B1B3F" />
+          </linearGradient>
+        </defs>
+        <!-- Forma de escudo -->
+        <path d="M50 5 L88 20 C88 75 50 112 50 112 C50 112 12 75 12 20 Z" fill="url(#shieldGrad)" stroke="#FFE885" stroke-width="4" />
+        <!-- Estrella campeones -->
+        <polygon points="50,15 54,27 67,27 56,35 60,47 50,39 40,47 44,35 33,27 46,27" fill="#FFE885" />
+        <!-- Corona/Texto -->
+        <text x="50" y="70" font-family="'Bebas Neue', sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle">ESPAÑA</text>
+        <text x="50" y="90" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#FFC400" text-anchor="middle">#19 YAMAL</text>
+      </svg>
+
+      <h1 class="portada-title-main">¡ESTÁS CONVOCADO!</h1>
+      <h2 class="portada-subtitle" id="portadaNombreSub">CUMPLEAÑOS DE HOVIK GAEL</h2>
+      <div class="dorsal-chip">EDICIÓN ESPECIAL · DORSAL DE ORO</div>
+      <p class="portada-description">
+        Has sido seleccionado para disputar el partido más emocionante del año. Toca el botón para ingresar al estadio.
+      </p>
+
+      <!-- BOTÓN PRINCIPAL LATIENTE -->
+      <button id="btnAbrirInvitacion" class="btn-abrir-portada" aria-label="Abrir invitación de cumpleaños">
+        <span class="btn-icon">🎟️</span>
+        <span>ABRIR INVITACIÓN</span>
+      </button>
+      <div class="portada-note">
+        <span>🔊 Toca para entrar con sonido y narración oficial</span>
+      </div>
+    </div>
+
+    <div></div>
+  </section>
+
+  <!-- ===============================================================
+       2. TÚNEL DE SALIDA DE ESTADIO & DESTELLO DORADO
+       =============================================================== -->
+  <div id="tunnelOverlay">
+    <div class="tunnel-gate tunnel-gate-left"></div>
+    <div class="tunnel-gate tunnel-gate-right"></div>
+  </div>
+  <div id="goldenFlash"></div>
+
+  <!-- ===============================================================
+       3. CONTENIDO PRINCIPAL: TARJETA DE CONVOCATORIA
+       =============================================================== -->
+  <main class="main-wrapper" id="mainWrapper">
+    <article class="card-container">
+      
+      <!-- Franja superior de Campeones -->
+      <div class="card-top-banner">
+        <div class="top-banner-text">
+          <span>🇪🇸</span>
+          <span>FICHA OFICIAL DE PARTIDO</span>
+        </div>
+        <div class="stars-champions">★★★★★</div>
+      </div>
+
+      <!-- Imagen Afiche Hero (Hovik Gael & Lamine Yamal) -->
+      <div class="card-hero-media">
+        <img src="fondo.jpg" alt="Hovik Gael y Lamine Yamal - Convocatoria Oficial" id="cardHeroImg">
+        <div class="card-hero-overlay"></div>
+        <div class="hero-dorsal-tag">
+          <div class="dorsal-mini-badge" id="badgeDorsal">19</div>
+          <div class="dorsal-tag-text">INSPIRADO EN LAMINE YAMAL</div>
+        </div>
+      </div>
+
+      <div class="card-body">
+
+        <!-- Título del cumpleañero con dorsal gigante -->
+        <header class="player-title-section">
+          <h1 class="player-name-main" id="displayNombre">HOVIK GAEL</h1>
+          <div class="dorsal-age-wrapper">
+            <div class="dorsal-big-number" id="displayEdad">5</div>
+            <div class="dorsal-age-text">
+              AÑOS
+              <span>¡DORSAL DE CAMPEÓN!</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- CAJA DE TEXTO DE LA CONVOCATORIA (Frases sincronizadas con la voz) -->
+        <section class="convocatoria-box" aria-label="Texto de la convocatoria">
+          <div class="convocatoria-box-header">
+            <div class="convocatoria-badge-title">
+              <span>🎙️</span>
+              <span>CONVOCATORIA EN DIRECTO</span>
+            </div>
+            <div class="convocatoria-live-indicator">
+              <span class="live-dot"></span>
+              <span>EN VIVO</span>
+            </div>
+          </div>
+          <div id="convocatoriaFrasesContainer">
+            <!-- Las frases se generan dinámicamente desde el objeto CONFIG -->
+          </div>
+        </section>
+
+        <!-- FICHA TÉCNICA CON ÍCONOS: FECHA, HORA, LUGAR -->
+        <section class="match-info-grid" aria-label="Detalles del evento">
+          
+          <!-- Fecha -->
+          <div class="info-card">
+            <div class="info-icon-bubble">📅</div>
+            <div class="info-content">
+              <div class="info-label">FECHA DEL ENCUENTRO</div>
+              <div class="info-value" id="displayFecha">Domingo, 22 de Noviembre</div>
+              <div class="info-subvalue">Gran Final de Cumpleaños</div>
+            </div>
+          </div>
+
+          <!-- Hora -->
+          <div class="info-card">
+            <div class="info-icon-bubble">⏰</div>
+            <div class="info-content">
+              <div class="info-label">HORA DEL SILBATAZO</div>
+              <div class="info-value" id="displayHora">10:00 a. m.</div>
+              <div class="info-subvalue">Apertura de estadio y calentamiento</div>
+            </div>
+          </div>
+
+          <!-- Lugar -->
+          <div class="info-card">
+            <div class="info-icon-bubble">📍</div>
+            <div class="info-content">
+              <div class="info-label">SEDE DEL PARTIDO</div>
+              <div class="info-value" id="displayLugar">Carrera 7 # 13-36, Sibaté</div>
+              <div class="info-subvalue" id="displayLugarNombre">Sede Campestre / Cancha Principal</div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- CUENTA REGRESIVA EN VIVO -->
+        <section class="countdown-section" aria-label="Cuenta regresiva para el partido">
+          <div class="countdown-title">
+            <span>⚽</span>
+            <span id="countdownTitleText">FALTAN PARA EL PITAZO INICIAL</span>
+            <span>⚽</span>
+          </div>
+
+          <div class="countdown-grid" id="countdownGrid">
+            <div class="countdown-item">
+              <div class="countdown-number" id="cdDays">00</div>
+              <div class="countdown-unit">DÍAS</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="cdHours">00</div>
+              <div class="countdown-unit">HORAS</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="cdMinutes">00</div>
+              <div class="countdown-unit">MIN</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="cdSeconds">00</div>
+              <div class="countdown-unit">SEG</div>
+            </div>
+          </div>
+
+          <div class="match-day-alert" id="matchDayAlert">
+            🏆 ¡HOY ES EL GRAN PARTIDO! ¡A LA CANCHA! ⚽🎉
+          </div>
+        </section>
+
+        <!-- BOTONES PRINCIPALES DE ACCIÓN (Touch-Friendly para pulgar) -->
+        <section class="actions-section">
+
+          <!-- 1. CÓMO LLEGAR (Maps & Waze) -->
+          <div>
+            <div class="action-group-title">
+              <span>📍</span>
+              <span>UBICACIÓN DEL ESTADIO</span>
+            </div>
+            <a id="btnGoogleMaps" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-maps">
+              <span>🗺️</span>
+              <span>CÓMO LLEGAR (GOOGLE MAPS)</span>
+            </a>
+            <a id="btnWaze" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-waze">
+              <span>🚗</span>
+              <span>Abrir con Waze</span>
+            </a>
+          </div>
+
+          <!-- 2. CONFIRMAR ASISTENCIA POR WHATSAPP -->
+          <div class="confirmacion-card">
+            <div class="action-group-title" style="color: #4ADE80;">
+              <span>✅</span>
+              <span>CONFIRMAR ASISTENCIA</span>
+            </div>
+
+            <!-- Campo opcional de nombre -->
+            <div class="form-group">
+              <label for="inputNombre" class="form-label">
+                <span>👤</span>
+                <span>Tu nombre o familia (opcional):</span>
+              </label>
+              <input type="text" id="inputNombre" class="form-input" placeholder="Ej: Tía Carmen, Andrés y Familia...">
+            </div>
+
+            <!-- Selector de cantidad de personas -->
+            <div class="form-group">
+              <label for="selectPersonas" class="form-label">
+                <span>👥</span>
+                <span>¿Cuántos jugadores asisten?</span>
+              </label>
+              <select id="selectPersonas" class="form-select">
+                <option value="1">1 persona (Voy solo/a)</option>
+                <option value="2" selected>2 personas</option>
+                <option value="3">3 personas</option>
+                <option value="4">4 personas</option>
+                <option value="5">5 personas</option>
+                <option value="6">Equipo completo (6 o más)</option>
+              </select>
+            </div>
+
+            <!-- Botón de WhatsApp -->
+            <button id="btnConfirmarWhatsApp" class="btn btn-whatsapp">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+              </svg>
+              <span>CONFIRMAR ASISTENCIA</span>
+            </button>
+            <div class="confirm-deadline" id="displayFechaLimite">Confirmar antes del: 18 de Noviembre</div>
+          </div>
+
+          <!-- 3. AGREGAR A GOOGLE CALENDAR -->
+          <div>
+            <a id="btnGoogleCalendar" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-calendar">
+              <span>🗓️</span>
+              <span>AGREGAR A GOOGLE CALENDAR</span>
+            </a>
+          </div>
+
+        </section>
+
+        <!-- PIE DE TARJETA -->
+        <footer class="card-footer">
+          <div class="card-footer-slogan">¡TE ESPERAMOS EN LA CANCHA!</div>
+          <div class="card-footer-sub">Ponte la camiseta de La Roja y ven a festejar</div>
+        </footer>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- ===============================================================
+       CONTROLES FLOTANTES (Silenciar Música / Repetir Narración)
+       =============================================================== -->
+  <aside class="floating-controls">
+    <!-- Botón Repetir Narración Oficial -->
+    <button id="btnRepetirNarracion" class="floating-btn" title="Repetir narración del partido">
+      <span>🔁</span>
+      <span>Escuchar invitación</span>
+    </button>
+    
+    <!-- Botón Mute / Unmute de música -->
+    <button id="btnToggleMusica" class="floating-btn mini" title="Silenciar o reactivar música">
+      <div class="sound-bars-anim" id="soundBars">
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+        <div class="sound-bar"></div>
+      </div>
+    </button>
+  </aside>
+
+  <!-- ===============================================================
+       JAVASCRIPT: CONFIGURACIÓN, AUDIO, APERTURA Y NARRACIÓN
+       =============================================================== -->
+  <script>
+    /**
+     * ===============================================================
+     * OBJETO CONFIG: Modifica aquí todos los datos fácilmente
+     * ===============================================================
+     */
+    const CONFIG = {
+      // 1. Datos del Cumpleañero
+      nombre: "HOVIK GAEL",
+      edad: 5,
+      dorsalInspiracion: 19, // Lamine Yamal (dorsal 19 de la Selección Española)
+
+      // 2. Fecha y Hora del Evento
+      fechaTexto: "Domingo, 22 de Noviembre",
+      horaTexto: "10:00 a. m.",
+      // Formato ISO (YYYY-MM-DDTHH:MM:SS) para el cronómetro regresivo y Google Calendar
+      fechaEventoISO: "2026-11-22T10:00:00",
+      duracionHoras: 4, // Duración estimada para Google Calendar
+      fechaLimiteTexto: "Confirmar antes del: 18 de Noviembre",
+
+      // 3. Lugar y Ubicación
+      lugarNombre: "Sede Campestre / Cancha Principal",
+      direccion: "Carrera 7 # 13-36, Sibaté",
+      // Enlace para Google Maps (con coordenadas o dirección de búsqueda)
+      googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Carrera+7+%23+13-36%2C+Sibat%C3%A9",
+      // Enlace para Waze
+      wazeUrl: "https://waze.com/ul?q=Carrera%207%20%23%2013-36%2C%20Sibat%C3%A9",
+
+      // 4. WhatsApp para confirmación (Código de país + número, sin + ni espacios)
+      whatsappNumero: "573173779233",
+
+      // 5. Archivos multimedia en la misma carpeta que este index.html
+      fondoImagen: "fondo.jpg",
+      musicaAudio: "musica.mp3",
+      narracionAudio: "", // Vacío para usar la voz del navegador que lee frase por frase
+      previewImagen: "preview.jpg",
+
+      // 6. Volúmenes de audio (con atenuación suave durante la voz)
+      volumenMusicaNormal: 0.55,
+      volumenMusicaAtenuado: 0.05, // Ducking suave al 5% para que la voz se entienda nítida
+
+      // 7. Guion de la narración deportiva (se resalta frase por frase en pantalla)
+      guionFrases: [
+        "¡Atención, atención! Se viene el partido más importante del año.",
+        "{NOMBRE} cumple {EDAD} años, y tú has sido convocado a la selección de sus invitados.",
+        "El encuentro será el {FECHA}, a las {HORA}, en {LUGAR}.",
+        "Ponte la camiseta de La Roja, trae tu mejor ánimo y no faltes.",
+        "Confirma tu asistencia tocando el botón de WhatsApp.",
+        "¡Te esperamos!"
+      ]
+    };
+
+    /* ===============================================================
+       ESTADO GLOBAL DE LA APLICACIÓN
+       =============================================================== */
+    let musicaAudio = document.getElementById('musicaFondo');
+    let narracionAudioObj = null;
+    let isMusicPlaying = false;
+    let isMusicaMuted = false;
+    let isNarrando = false;
+    let speechSynthDisponible = ('speechSynthesis' in window);
+    let spanishVoice = null;
+    let frasesGeneradas = [];
+    let audioFadeInterval = null;
+    let countdownTimer = null;
+
+    /* ===============================================================
+       INICIALIZACIÓN AL CARGAR EL DOM
+       =============================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarDatosEnUI();
+      renderizarFrasesConvocatoria();
+      iniciarCuentaRegresiva();
+      vincularBotonesAccion();
+      cargarVocesSpeechSynthesis();
+      precargarRecursos();
+    });
+
+    /**
+     * 1. Cargar datos del objeto CONFIG en los elementos de la interfaz
+     */
+    function cargarDatosEnUI() {
+      document.title = `⚽ ¡Estás convocado al cumpleaños de ${CONFIG.nombre}!`;
+      document.getElementById('portadaNombreSub').textContent = `CUMPLEAÑOS DE ${CONFIG.nombre}`;
+      document.getElementById('displayNombre').textContent = CONFIG.nombre;
+      document.getElementById('displayEdad').textContent = CONFIG.edad;
+      document.getElementById('badgeDorsal').textContent = CONFIG.dorsalInspiracion;
+      document.getElementById('displayFecha').textContent = CONFIG.fechaTexto;
+      document.getElementById('displayHora').textContent = CONFIG.horaTexto;
+      document.getElementById('displayLugar').textContent = CONFIG.direccion;
+      document.getElementById('displayLugarNombre').textContent = CONFIG.lugarNombre;
+      document.getElementById('displayFechaLimite').textContent = CONFIG.fechaLimiteTexto;
+      
+      // Enlaces de navegación
+      document.getElementById('btnGoogleMaps').href = CONFIG.googleMapsUrl;
+      document.getElementById('btnWaze').href = CONFIG.wazeUrl;
+
+      // Generar enlace dinámico de Google Calendar
+      configurarBotonGoogleCalendar();
+    }
+
+    /**
+     * 2. Renderizar las frases del guion en la tarjeta
+     */
+    function renderizarFrasesConvocatoria() {
+      const container = document.getElementById('convocatoriaFrasesContainer');
+      container.innerHTML = '';
+      frasesGeneradas = [];
+
+      CONFIG.guionFrases.forEach((plantilla, index) => {
+        // Reemplazo dinámico de variables
+        const textoLimpio = plantilla
+          .replace(/{NOMBRE}/g, CONFIG.nombre)
+          .replace(/{EDAD}/g, CONFIG.edad)
+          .replace(/{FECHA}/g, CONFIG.fechaTexto)
+          .replace(/{HORA}/g, CONFIG.horaTexto)
+          .replace(/{LUGAR}/g, CONFIG.direccion);
+
+        frasesGeneradas.push(textoLimpio);
+
+        const p = document.createElement('p');
+        p.className = 'narracion-frase';
+        p.id = `frase-${index}`;
+        p.textContent = textoLimpio;
+        container.appendChild(p);
+      });
+    }
+
+    /**
+     * 3. Precarga de imagen y audio con balón girando
+     */
+    function precargarRecursos() {
+      const preloader = document.getElementById('preloader');
+      let imgLoaded = false;
+      let timerDone = false;
+
+      function checkFinish() {
+        if (imgLoaded || timerDone) {
+          preloader.classList.add('loaded');
+        }
+      }
+
+      // Precargar imagen de fondo
+      const img = new Image();
+      img.src = CONFIG.fondoImagen;
+      img.onload = () => {
+        imgLoaded = true;
+        checkFinish();
+      };
+      img.onerror = () => {
+        // Si no carga la imagen, continuamos de todos modos sin bloquear al usuario
+        imgLoaded = true;
+        checkFinish();
+      };
+
+      // Timeout de seguridad: máximo 2 segundos para que nunca se quede trabado
+      setTimeout(() => {
+        timerDone = true;
+        checkFinish();
+      }, 1800);
+    }
+
+    /**
+     * 4. Vincular eventos de botones
+     */
+    function vincularBotonesAccion() {
+      // Botón de Apertura en Portada
+      const btnAbrir = document.getElementById('btnAbrirInvitacion');
+      btnAbrir.addEventListener('click', abrirInvitacionConEfectos);
+
+      // Botón de WhatsApp
+      const btnWA = document.getElementById('btnConfirmarWhatsApp');
+      btnWA.addEventListener('click', enviarConfirmacionWhatsApp);
+
+      // Botón Silenciar / Desilenciar música
+      const btnMute = document.getElementById('btnToggleMusica');
+      btnMute.addEventListener('click', toggleMusicaFondo);
+
+      // Botón Repetir Narración
+      const btnRepetir = document.getElementById('btnRepetirNarracion');
+      btnRepetir.addEventListener('click', () => {
+        iniciarNarracion(true);
+      });
+    }
+
+    /* ===============================================================
+       APERTURA DE LA INVITACIÓN (TÚNEL DE ESTADIO, CONFETI Y MÚSICA)
+       =============================================================== */
+    function abrirInvitacionConEfectos() {
+      const portada = document.getElementById('portadaScreen');
+      const tunnel = document.getElementById('tunnelOverlay');
+      const flash = document.getElementById('goldenFlash');
+      const stadiumBg = document.getElementById('stadiumBg');
+
+      // 1. Iniciar música de la Champions en bucle y subir volumen poco a poco a 0.6
+      reproducirMusicaChampions();
+
+      // 2. Activar túnel de salida
+      tunnel.classList.add('active');
+      requestAnimationFrame(() => {
+        tunnel.classList.add('opening');
+        flash.classList.add('flash-active');
+      });
+
+      // 3. Disparar confeti con los colores de La Roja (#C60B1E, #FFC400, #D4AF37)
+      lanzarConfetiCampeones();
+
+      // 4. Ocultar portada
+      portada.classList.add('hidden');
+
+      // 5. Activar efecto Ken Burns suave en el fondo
+      stadiumBg.classList.add('ken-burns');
+
+      // 6. Eliminar el túnel después de la animación para optimizar rendimiento
+      setTimeout(() => {
+        tunnel.style.display = 'none';
+        flash.style.display = 'none';
+      }, 1600);
+
+      // 7. Arrancar narración: a los 1.4s atenuar la música y a los 2.0s arrancar la voz nítida
+      setTimeout(() => {
+        atenuarMusica(true);
+      }, 1400);
+
+      setTimeout(() => {
+        iniciarNarracion(false);
+      }, 2000);
+    }
+
+    /**
+     * Reproduce la música de fondo con fade in progresivo hasta 0.6
+     */
+    function reproducirMusicaChampions() {
+      if (!musicaAudio) return;
+      musicaAudio.volume = 0;
+      
+      const playPromise = musicaAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          isMusicPlaying = true;
+          actualizarIconoSonido(true);
+          fadeAudioVolume(musicaAudio, CONFIG.volumenMusicaNormal, 1800);
+        }).catch(err => {
+          console.warn("Autoplay bloqueado o archivo musica.mp3 ausente:", err);
+          actualizarIconoSonido(false);
+        });
+      }
+    }
+
+    /**
+     * Fade in / Fade out suave para el audio
+     */
+    function fadeAudioVolume(audio, targetVol, durationMs) {
+      if (!audio || isMusicaMuted) return;
+      if (audioFadeInterval) clearInterval(audioFadeInterval);
+
+      const startVol = audio.volume;
+      const diff = targetVol - startVol;
+      const steps = 20;
+      const intervalTime = durationMs / steps;
+      let currentStep = 0;
+
+      audioFadeInterval = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+        audio.volume = Math.min(1, Math.max(0, startVol + (diff * progress)));
+
+        if (currentStep >= steps) {
+          clearInterval(audioFadeInterval);
+          audioFadeInterval = null;
+        }
+      }, intervalTime);
+    }
+
+    /**
+     * Ducking de audio: baja la música a 0.15 mientras habla la voz, y luego la sube a 0.6
+     */
+    function atenuarMusica(atenuar) {
+      if (!musicaAudio || isMusicaMuted) return;
+      const target = atenuar ? CONFIG.volumenMusicaAtenuado : CONFIG.volumenMusicaNormal;
+      fadeAudioVolume(musicaAudio, target, 600);
+    }
+
+    /**
+     * Silenciar o reactivar la música manualmente
+     */
+    function toggleMusicaFondo() {
+      if (!musicaAudio) return;
+
+      if (isMusicaMuted) {
+        isMusicaMuted = false;
+        musicaAudio.muted = false;
+        fadeAudioVolume(musicaAudio, CONFIG.volumenMusicaNormal, 400);
+        actualizarIconoSonido(true);
+      } else {
+        isMusicaMuted = true;
+        musicaAudio.muted = true;
+        actualizarIconoSonido(false);
+      }
+    }
+
+    function actualizarIconoSonido(activo) {
+      const soundBars = document.getElementById('soundBars');
+      if (activo && !isMusicaMuted) {
+        soundBars.classList.remove('sound-muted');
+      } else {
+        soundBars.classList.add('sound-muted');
+      }
+    }
+
+    /* ===============================================================
+       LANZAMIENTO DE CONFETI DE CAMPEONES (Rojo, Amarillo y Dorado)
+       =============================================================== */
+    function lanzarConfetiCampeones() {
+      if (typeof confetti !== 'function') return;
+
+      const colores = ['#C60B1E', '#FFC400', '#D4AF37', '#FFFFFF'];
+
+      // Ráfaga lateral izquierda
+      confetti({
+        particleCount: 70,
+        angle: 60,
+        spread: 65,
+        origin: { x: 0, y: 0.8 },
+        colors: colores
+      });
+
+      // Ráfaga lateral derecha
+      confetti({
+        particleCount: 70,
+        angle: 120,
+        spread: 65,
+        origin: { x: 1, y: 0.8 },
+        colors: colores
+      });
+
+      // Ráfaga central de campeones tras medio segundo
+      setTimeout(() => {
+        confetti({
+          particleCount: 90,
+          spread: 100,
+          origin: { x: 0.5, y: 0.65 },
+          colors: colores
+        });
+      }, 400);
+    }
+
+    /* ===============================================================
+       SISTEMA DE NARRACIÓN (MP3 O WEB SPEECH API + RESALTADO)
+       =============================================================== */
+    function cargarVocesSpeechSynthesis() {
+      if (!speechSynthDisponible) return;
+
+      function buscarVozEspanol() {
+        const voces = window.speechSynthesis.getVoices();
+        if (!voces || voces.length === 0) return;
+
+        // 1. Preferir voz de España (es-ES)
+        spanishVoice = voces.find(v => v.lang === 'es-ES' || v.lang === 'es_ES');
+        // 2. Si no, cualquier voz en español (es-*)
+        if (!spanishVoice) {
+          spanishVoice = voces.find(v => v.lang.startsWith('es'));
+        }
+      }
+
+      buscarVozEspanol();
+      if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = buscarVozEspanol;
+      }
+    }
+
+    /**
+     * Inicia la narración: primero prueba narracion.mp3; si no existe, usa Web Speech API
+     */
+    function iniciarNarracion(esReinicioManual = false) {
+      if (isNarrando && !esReinicioManual) return;
+
+      // Si ya estaba narrando, cancelar
+      detenerNarracionActiva();
+      isNarrando = true;
+
+      // 1. Ducking: Atenuar música de fondo al nivel de fondo suave
+      atenuarMusica(true);
+
+      // Si no hay archivo mp3 configurado, usar directamente la voz del navegador
+      if (!CONFIG.narracionAudio) {
+        setTimeout(() => {
+          ejecutarNarracionWebSpeech();
+        }, 150);
+        return;
+      }
+
+      // 2. Probar si el archivo narracion.mp3 existe y se puede reproducir
+      const testAudio = new Audio();
+      testAudio.src = CONFIG.narracionAudio;
+      let recursoMp3Exitoso = false;
+
+      // Manejo de carga exitosa del MP3
+      testAudio.oncanplaythrough = function onCanPlay() {
+        if (recursoMp3Exitoso) return;
+        recursoMp3Exitoso = true;
+        testAudio.oncanplaythrough = null;
+        reproducirNarracionAudioMp3(testAudio);
+      };
+
+      // Si da error (ej. 404 porque el usuario no grabó el MP3 aún), pasar a Web Speech API
+      testAudio.onerror = function onAudioError() {
+        if (recursoMp3Exitoso) return;
+        recursoMp3Exitoso = true;
+        ejecutarNarracionWebSpeech();
+      };
+
+      // Timeout de seguridad: Si en 900ms el archivo no responde, activar Web Speech
+      setTimeout(() => {
+        if (!recursoMp3Exitoso) {
+          recursoMp3Exitoso = true;
+          testAudio.src = "";
+          ejecutarNarracionWebSpeech();
+        }
+      }, 900);
+    }
+
+    /**
+     * Detiene cualquier voz o audio de narración activo
+     */
+    function detenerNarracionActiva() {
+      if (narracionAudioObj) {
+        narracionAudioObj.pause();
+        narracionAudioObj = null;
+      }
+      if (speechSynthDisponible && window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
+      limpiarResaltadoFrases();
+      isNarrando = false;
+    }
+
+    /**
+     * Reproduce el archivo narracion.mp3 si fue provisto
+     */
+    function reproducirNarracionAudioMp3(audio) {
+      narracionAudioObj = audio;
+      audio.volume = 1.0;
+
+      // Sincronizar el resaltado de frases con precisión en base al audio
+      audio.ontimeupdate = () => {
+        if (!audio.duration) return;
+        const t = audio.currentTime;
+        const dur = audio.duration;
+        let currentIdx = 0;
+        if (t >= dur * 0.90) currentIdx = 5;
+        else if (t >= dur * 0.77) currentIdx = 4;
+        else if (t >= dur * 0.61) currentIdx = 3;
+        else if (t >= dur * 0.36) currentIdx = 2;
+        else if (t >= dur * 0.16) currentIdx = 1;
+        else currentIdx = 0;
+
+        resaltarFraseEnUI(currentIdx);
+      };
+
+      audio.play().then(() => {
+        audio.onended = () => {
+          audio.ontimeupdate = null;
+          finalizarNarracion();
+        };
+      }).catch(() => {
+        // Fallback inmediato si play() falla
+        ejecutarNarracionWebSpeech();
+      });
+    }
+
+    /**
+     * Ejecuta la narración frase por frase usando la Web Speech API
+     */
+    function ejecutarNarracionWebSpeech() {
+      if (!speechSynthDisponible) {
+        console.warn("Web Speech API no disponible en este navegador.");
+        finalizarNarracion();
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      let indexFrase = 0;
+
+      function hablarFrase(idx) {
+        if (idx >= frasesGeneradas.length) {
+          finalizarNarracion();
+          return;
+        }
+
+        // Resaltar en la pantalla la frase que se está leyendo
+        resaltarFraseEnUI(idx);
+
+        const utterance = new SpeechSynthesisUtterance(frasesGeneradas[idx]);
+        utterance.rate = 0.95; // Velocidad 0.95 según requerimientos
+        utterance.pitch = 1.02;
+
+        if (spanishVoice) {
+          utterance.voice = spanishVoice;
+          utterance.lang = spanishVoice.lang;
+        } else {
+          utterance.lang = 'es-ES';
+        }
+
+        utterance.onend = () => {
+          // Breve pausa deportiva entre frases
+          setTimeout(() => {
+            hablarFrase(idx + 1);
+          }, 250);
+        };
+
+        utterance.onerror = (e) => {
+          console.warn("Error en utterance de voz:", e);
+          hablarFrase(idx + 1);
+        };
+
+        window.speechSynthesis.speak(utterance);
+      }
+
+      hablarFrase(0);
+    }
+
+    /**
+     * Resalta la frase activa y remueve el resaltado de las demás
+     */
+    function resaltarFraseEnUI(index) {
+      document.querySelectorAll('.narracion-frase').forEach((el, i) => {
+        if (i === index) {
+          el.classList.add('activa');
+          // Desplazamiento suave para que siempre sea visible en celulares
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          el.classList.remove('activa');
+        }
+      });
+    }
+
+    function limpiarResaltadoFrases() {
+      document.querySelectorAll('.narracion-frase').forEach(el => {
+        el.classList.remove('activa');
+      });
+    }
+
+    /**
+     * Al terminar la narración, restablece el volumen de la música
+     */
+    function finalizarNarracion() {
+      isNarrando = false;
+      limpiarResaltadoFrases();
+      // Pausa elegante de 350ms y luego subir la música triunfalmente
+      setTimeout(() => {
+        atenuarMusica(false);
+      }, 350);
+    }
+
+    /* ===============================================================
+       GESTIÓN DE VISIBILIDAD DE PÁGINA (visibilitychange)
+       Pausa la música y la narración si el usuario sale (ej. a WhatsApp)
+       =============================================================== */
+    let estabaReproduciendoAntesDeOcultar = false;
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        // El usuario salió de la pestaña o minimizó
+        if (musicaAudio && !musicaAudio.paused) {
+          estabaReproduciendoAntesDeOcultar = true;
+          musicaAudio.pause();
+        }
+        if (narracionAudioObj && !narracionAudioObj.paused) {
+          narracionAudioObj.pause();
+        }
+        if (speechSynthDisponible && window.speechSynthesis.speaking) {
+          window.speechSynthesis.pause();
+        }
+      } else {
+        // El usuario volvió a la pestaña
+        if (estabaReproduciendoAntesDeOcultar && !isMusicaMuted) {
+          musicaAudio.play().catch(() => {});
+          estabaReproduciendoAntesDeOcultar = false;
+        }
+        if (speechSynthDisponible && window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+      }
+    });
+
+    /* ===============================================================
+       CUENTA REGRESIVA EN VIVO
+       =============================================================== */
+    function iniciarCuentaRegresiva() {
+      const fechaObjetivo = new Date(CONFIG.fechaEventoISO).getTime();
+      const elDias = document.getElementById('cdDays');
+      const elHoras = document.getElementById('cdHours');
+      const elMin = document.getElementById('cdMinutes');
+      const elSeg = document.getElementById('cdSeconds');
+      const grid = document.getElementById('countdownGrid');
+      const alertMatch = document.getElementById('matchDayAlert');
+      const title = document.getElementById('countdownTitleText');
+
+      function actualizar() {
+        const ahora = new Date().getTime();
+        const distancia = fechaObjetivo - ahora;
+
+        if (distancia <= 0) {
+          // El gran día ha llegado
+          grid.style.display = 'none';
+          alertMatch.style.display = 'block';
+          title.textContent = '¡HOY ES EL GRAN PARTIDO!';
+          if (countdownTimer) clearInterval(countdownTimer);
+          return;
+        }
+
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+        elDias.textContent = String(dias).padStart(2, '0');
+        elHoras.textContent = String(horas).padStart(2, '0');
+        elMin.textContent = String(minutos).padStart(2, '0');
+        elSeg.textContent = String(segundos).padStart(2, '0');
+      }
+
+      actualizar();
+      countdownTimer = setInterval(actualizar, 1000);
+    }
+
+    /* ===============================================================
+       CONFIRMACIÓN DE ASISTENCIA POR WHATSAPP
+       =============================================================== */
+    function enviarConfirmacionWhatsApp() {
+      const inputNombre = document.getElementById('inputNombre');
+      const selectPersonas = document.getElementById('selectPersonas');
+
+      const nombre = inputNombre ? inputNombre.value.trim() : "";
+      const personas = selectPersonas ? selectPersonas.value : "1";
+
+      // Construcción del mensaje solicitado exactamente:
+      // "¡Hola! Soy {nombre} ⚽🇪🇸 Confirmo mi asistencia al cumpleaños de [NOMBRE] el [FECHA]. Vamos {n} persona(s). ¡Nos vemos en la cancha!"
+      // Si no escribe nombre, se quita la parte de "Soy {nombre}".
+      let encabezado = "¡Hola!";
+      if (nombre) {
+        encabezado = `¡Hola! Soy ${nombre}`;
+      }
+
+      const mensaje = `${encabezado} ⚽🇪🇸 Confirmo mi asistencia al cumpleaños de ${CONFIG.nombre} el ${CONFIG.fechaTexto}. Vamos ${personas} persona(s). ¡Nos vemos en la cancha!`;
+
+      // Obtener el número de destino: si el enlace incluye ?wa= o ?tel=, se envía al WhatsApp de la persona que compartió
+      const urlParams = new URLSearchParams(window.location.search);
+      const numeroDestino = (urlParams.get('wa') || urlParams.get('tel') || CONFIG.whatsappNumero).replace(/\D/g, '');
+
+      const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensaje)}`;
+      window.open(urlWhatsApp, '_blank');
+    }
+
+    /* ===============================================================
+       INTEGRACIÓN CON GOOGLE CALENDAR
+       =============================================================== */
+    function configurarBotonGoogleCalendar() {
+      const btnCal = document.getElementById('btnGoogleCalendar');
+      const startDate = new Date(CONFIG.fechaEventoISO);
+      
+      // Fecha fin calculada sumando la duración en horas
+      const endDate = new Date(startDate.getTime() + (CONFIG.duracionHoras * 60 * 60 * 1000));
+
+      function formatoGoogleCal(d) {
+        return d.toISOString().replace(/-|:|\.\d\d\d/g, "");
+      }
+
+      const fechasFormato = `${formatoGoogleCal(startDate)}/${formatoGoogleCal(endDate)}`;
+      const titulo = `Cumpleaños de ${CONFIG.nombre} (${CONFIG.edad} Años) - Selección de Campeones ⚽🇪🇸`;
+      const detalles = `¡Estás convocado al cumpleaños de ${CONFIG.nombre}! Trae la camiseta de La Roja y tu mejor ánimo. Lugar: ${CONFIG.lugarNombre}, ${CONFIG.direccion}.`;
+
+      const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&dates=${fechasFormato}&details=${encodeURIComponent(detalles)}&location=${encodeURIComponent(CONFIG.direccion)}`;
+      btnCal.href = calendarUrl;
+    }
+  </script>
+</body>
+</html>
