@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- Optimizada para celulares (Mobile First: 360px a 430px) y adaptable a PC -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>⚽ ¡Estás convocado al cumpleaños de Hovik Gael!</title>
   
   <!-- Color temático para la barra del navegador móvil (Rojo España) -->
@@ -71,13 +71,24 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
       background-color: var(--azul-profundo);
       color: var(--blanco);
       font-family: var(--font-texto);
       overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
       line-height: 1.5;
     }
 
@@ -86,19 +97,27 @@
       position: fixed;
       inset: 0;
       z-index: 0;
+      pointer-events: none;
       background-image: 
         radial-gradient(circle at 50% 20%, rgba(11, 27, 63, 0.4) 0%, rgba(5, 13, 30, 0.95) 100%),
         url('fondo.jpg');
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
-      will-change: transform;
-      transform-origin: center center;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
-    /* Efecto Ken Burns suave al abrir la tarjeta */
-    .ken-burns {
-      animation: kenBurnsAnim 22s ease-in-out infinite alternate;
+    /* Efecto Ken Burns suave al abrir la tarjeta (fluido en PC) */
+    @media (min-width: 768px) {
+      .ken-burns {
+        animation: kenBurnsAnim 22s ease-in-out infinite alternate;
+      }
+    }
+    @media (max-width: 767px) {
+      .ken-burns {
+        transform: scale(1.02);
+      }
     }
 
     @keyframes kenBurnsAnim {
@@ -130,6 +149,13 @@
       background: radial-gradient(ellipse at top, rgba(255, 235, 150, 0.28) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 80%);
       transform-origin: top center;
       filter: blur(25px);
+    }
+
+    @media (max-width: 767px) {
+      /* En móviles se desactivan los filtros pesados de blur para desplazamiento a 60 FPS sin tirones */
+      .spotlight {
+        display: none !important;
+      }
     }
 
     .spotlight-left {
@@ -245,16 +271,18 @@
       background: 
         linear-gradient(180deg, rgba(11, 27, 63, 0.85) 0%, rgba(5, 13, 30, 0.88) 50%, rgba(198, 11, 30, 0.75) 100%),
         url('fondo.jpg') center center / cover no-repeat;
-      transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s;
+      transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
       text-align: center;
     }
 
     #portadaScreen.hidden {
       opacity: 0;
-      transform: scale(1.08);
+      transform: scale(1.05);
       visibility: hidden;
-      pointer-events: none;
+      pointer-events: none !important;
     }
 
     .portada-badge {
@@ -479,15 +507,15 @@
       flex-direction: column;
       align-items: center;
       padding: 20px 14px 100px;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
     }
 
     .card-container {
       width: 100%;
       max-width: 440px;
       margin: 0 auto;
-      background: rgba(11, 27, 63, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(11, 27, 63, 0.94);
       border-radius: var(--card-radius);
       border: var(--borde-dorado);
       box-shadow: 
@@ -495,6 +523,8 @@
         0 0 30px rgba(212, 175, 55, 0.25);
       overflow: hidden;
       position: relative;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     /* Franja superior dorada y roja */
@@ -1041,9 +1071,11 @@
       flex-direction: column;
       gap: 12px;
       align-items: flex-end;
+      pointer-events: none;
     }
 
     .floating-btn {
+      pointer-events: auto;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -1249,7 +1281,7 @@
 
       <!-- Imagen Afiche Hero (Hovik Gael & Lamine Yamal) -->
       <div class="card-hero-media">
-        <img src="fondo.jpg" alt="Hovik Gael y Lamine Yamal - Convocatoria Oficial" id="cardHeroImg">
+        <img src="fondo.jpg" alt="Hovik Gael y Lamine Yamal - Convocatoria Oficial" id="cardHeroImg" fetchpriority="high" decoding="async">
         <div class="card-hero-overlay"></div>
         <div class="hero-dorsal-tag">
           <div class="dorsal-mini-badge" id="badgeDorsal">19</div>
@@ -1592,33 +1624,25 @@
      */
     function precargarRecursos() {
       const preloader = document.getElementById('preloader');
-      let imgLoaded = false;
-      let timerDone = false;
+      let cerrado = false;
 
-      function checkFinish() {
-        if (imgLoaded || timerDone) {
-          preloader.classList.add('loaded');
-        }
+      function cerrarPreloader() {
+        if (cerrado) return;
+        cerrado = true;
+        preloader.classList.add('loaded');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
       }
 
-      // Precargar imagen de fondo
+      // Precargar imagen de fondo de forma ágil
       const img = new Image();
       img.src = CONFIG.fondoImagen;
-      img.onload = () => {
-        imgLoaded = true;
-        checkFinish();
-      };
-      img.onerror = () => {
-        // Si no carga la imagen, continuamos de todos modos sin bloquear al usuario
-        imgLoaded = true;
-        checkFinish();
-      };
+      img.onload = cerrarPreloader;
+      img.onerror = cerrarPreloader;
 
-      // Timeout de seguridad: máximo 2 segundos para que nunca se quede trabado
-      setTimeout(() => {
-        timerDone = true;
-        checkFinish();
-      }, 1800);
+      // Timeout ágil de 650ms: carga al instante sin demoras
+      setTimeout(cerrarPreloader, 650);
     }
 
     /**
@@ -1666,8 +1690,11 @@
       // 3. Disparar confeti con los colores de La Roja (#C60B1E, #FFC400, #D4AF37)
       lanzarConfetiCampeones();
 
-      // 4. Ocultar portada
+      // 4. Ocultar portada y remover del flujo táctil para que el scroll sea inmediato
       portada.classList.add('hidden');
+      setTimeout(() => {
+        portada.style.display = 'none';
+      }, 700);
 
       // 5. Activar efecto Ken Burns suave en el fondo
       stadiumBg.classList.add('ken-burns');
@@ -1676,7 +1703,7 @@
       setTimeout(() => {
         tunnel.style.display = 'none';
         flash.style.display = 'none';
-      }, 1600);
+      }, 1400);
 
       // 7. Arrancar narración: a los 1.4s atenuar la música y a los 2.0s arrancar la voz nítida
       setTimeout(() => {
@@ -1988,8 +2015,6 @@
       document.querySelectorAll('.narracion-frase').forEach((el, i) => {
         if (i === index) {
           el.classList.add('activa');
-          // Desplazamiento suave para que siempre sea visible en celulares
-          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
           el.classList.remove('activa');
         }
