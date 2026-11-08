@@ -562,26 +562,30 @@
       letter-spacing: 2px;
     }
 
-    /* AFICHE HERO / POSTER CON PORTUGAL Y CRISTIANO RONALDO */
+    /* AFICHE HERO / POSTER CON PORTUGAL Y CRISTIANO RONALDO (CALIDAD ULTRA HD) */
     .card-hero-media {
       position: relative;
       width: 100%;
-      background: #000;
+      background: #050D1E;
       overflow: hidden;
+      border-radius: var(--card-radius) var(--card-radius) 0 0;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
     }
 
     .card-hero-media img {
       width: 100%;
       height: auto;
       display: block;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
       transition: transform 0.6s ease;
     }
 
     .card-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(11, 27, 63, 0.1) 0%, rgba(11, 27, 63, 0.6) 70%, rgba(11, 27, 63, 0.95) 100%);
-      pointer-events: none;
+      display: none;
     }
 
     /* BADGE DE DORSAL 7 CR7 & CAMISETA */
