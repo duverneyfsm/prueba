@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>⚽ ¡Estás convocado al cumpleaños de Hovik Gael!</title>
   
-  <!-- Color temático para la barra del navegador móvil (Rojo España) -->
-  <meta name="theme-color" content="#C60B1E">
+  <!-- Color temático para la barra del navegador móvil (Rojo y Verde Selección de Portugal) -->
+  <meta name="theme-color" content="#C8102E">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- ===============================================================
@@ -18,7 +18,7 @@
        =============================================================== -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="⚽ ¡Estás convocado al cumpleaños de Hovik Gael!">
-  <meta property="og:description" content="Domingo, 22 de Noviembre · Carrera 7 # 13-36, Sibaté — ¡Toca para abrir tu invitación de La Roja!">
+  <meta property="og:description" content="Domingo, 22 de Noviembre · Carrera 7 # 13-36, Sibaté — ¡Toca para abrir tu invitación de Portugal!">
   <meta property="og:image" content="https://duverneyfsm.github.io/prueba/preview.jpg">
   <meta property="og:image:secure_url" content="https://duverneyfsm.github.io/prueba/preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -37,14 +37,21 @@
 
   <style>
     /* ===============================================================
-       VARIABLES CSS Y PALETA DE COLORES OFICIAL DE LA ROJA
+       VARIABLES CSS Y PALETA DE COLORES OFICIAL DE PORTUGAL (FPF)
        =============================================================== */
     :root {
-      --rojo-espana: #C60B1E;
-      --rojo-oscuro: #8E0010;
-      --amarillo-espana: #FFC400;
+      --rojo-portugal: #C8102E;
+      --rojo-oscuro: #8B0014;
+      --verde-portugal: #046A38;
+      --verde-oscuro: #024724;
+      --amarillo-portugal: #FFD100;
       --dorado: #D4AF37;
       --dorado-brillo: #FFE885;
+      
+      /* Compatibilidad de variables existentes */
+      --rojo-espana: var(--rojo-portugal);
+      --amarillo-espana: var(--amarillo-portugal);
+
       --azul-noche: #0B1B3F;
       --azul-profundo: #050D1E;
       --verde-cancha: #0B6623;
@@ -58,7 +65,7 @@
       --font-texto: 'Montserrat', sans-serif;
       
       --sombra-dorada: 0 0 20px rgba(212, 175, 55, 0.45);
-      --sombra-roja: 0 10px 25px rgba(198, 11, 30, 0.4);
+      --sombra-roja: 0 10px 25px rgba(200, 16, 46, 0.4);
       --borde-dorado: 1.5px solid rgba(212, 175, 55, 0.6);
       --card-radius: 24px;
     }
@@ -362,26 +369,26 @@
 
     .dorsal-chip {
       display: inline-block;
-      background: var(--rojo-espana);
-      color: var(--amarillo-espana);
-      border: 1px solid var(--amarillo-espana);
+      background: var(--rojo-portugal);
+      color: var(--amarillo-portugal);
+      border: 1px solid var(--verde-portugal);
       font-family: var(--font-deportiva);
       font-size: 1.1rem;
       letter-spacing: 1px;
       padding: 3px 12px;
       border-radius: 6px;
       margin-bottom: 20px;
-      box-shadow: 0 0 15px rgba(198, 11, 30, 0.5);
+      box-shadow: 0 0 15px rgba(200, 16, 46, 0.5);
     }
 
-    /* BOTÓN LATIENTE: ABRIR INVITACIÓN */
+    /* BOTÓN LATIENTE: ABRIR INVITACIÓN (Verde, Rojo y Dorado Portugal) */
     .btn-abrir-portada {
       width: 100%;
       max-width: 320px;
       padding: 16px 28px;
       border-radius: 50px;
       border: 2px solid var(--dorado-brillo);
-      background: linear-gradient(135deg, var(--amarillo-espana) 0%, var(--rojo-espana) 60%, var(--rojo-oscuro) 100%);
+      background: linear-gradient(135deg, var(--verde-portugal) 0%, var(--rojo-portugal) 55%, var(--rojo-oscuro) 100%);
       color: var(--blanco);
       font-family: var(--font-deportiva);
       font-size: 1.65rem;
@@ -393,8 +400,8 @@
       justify-content: center;
       gap: 12px;
       box-shadow: 
-        0 8px 30px rgba(198, 11, 30, 0.6),
-        0 0 25px rgba(255, 196, 0, 0.7);
+        0 8px 30px rgba(200, 16, 46, 0.6),
+        0 0 25px rgba(255, 209, 0, 0.7);
       animation: pulseGlow 1.8s infinite;
       transition: transform 0.2s, box-shadow 0.2s;
     }
@@ -527,9 +534,9 @@
       -webkit-transform: translateZ(0);
     }
 
-    /* Franja superior dorada y roja */
+    /* Franja superior de Portugal (Rojo y Verde con detalles dorados) */
     .card-top-banner {
-      background: linear-gradient(90deg, var(--rojo-espana) 0%, var(--amarillo-espana) 50%, var(--rojo-espana) 100%);
+      background: linear-gradient(90deg, var(--verde-portugal) 0%, var(--rojo-portugal) 50%, var(--verde-portugal) 100%);
       padding: 10px 16px;
       display: flex;
       align-items: center;
@@ -541,20 +548,21 @@
       font-family: var(--font-deportiva);
       font-size: 1.15rem;
       letter-spacing: 1.5px;
-      color: #050D1E;
+      color: #FFFFFF;
       font-weight: 900;
       display: flex;
       align-items: center;
       gap: 6px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
     }
 
     .stars-champions {
-      color: #050D1E;
+      color: var(--amarillo-portugal);
       font-size: 0.95rem;
       letter-spacing: 2px;
     }
 
-    /* AFICHE HERO / POSTER CON LA ROJA Y LAMINE YAMAL */
+    /* AFICHE HERO / POSTER CON PORTUGAL Y CRISTIANO RONALDO */
     .card-hero-media {
       position: relative;
       width: 100%;
@@ -576,7 +584,7 @@
       pointer-events: none;
     }
 
-    /* BADGE DE DORSAL 19 & CAMISETA */
+    /* BADGE DE DORSAL 7 CR7 & CAMISETA */
     .hero-dorsal-tag {
       position: absolute;
       bottom: 15px;
@@ -588,22 +596,22 @@
       backdrop-filter: blur(8px);
       padding: 6px 14px;
       border-radius: 50px;
-      border: 1px solid var(--amarillo-espana);
+      border: 1px solid var(--verde-portugal);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     }
 
     .dorsal-mini-badge {
       font-family: var(--font-deportiva);
       font-size: 1.3rem;
-      color: var(--amarillo-espana);
-      background: var(--rojo-espana);
+      color: var(--amarillo-portugal);
+      background: var(--rojo-portugal);
       width: 32px;
       height: 32px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1.5px solid var(--dorado-brillo);
+      border: 1.5px solid var(--verde-portugal);
     }
 
     .dorsal-tag-text {
@@ -639,7 +647,7 @@
       margin-bottom: 6px;
     }
 
-    /* Gran dorsal estilizado como camiseta de España */
+    /* Gran dorsal estilizado como camiseta de Portugal */
     .dorsal-age-wrapper {
       display: inline-flex;
       align-items: center;
@@ -1203,7 +1211,7 @@
       </svg>
     </div>
     <div class="preloader-text">CALENTANDO MOTORES...</div>
-    <div class="preloader-subtext">Selección Española · Convocatoria Oficial</div>
+    <div class="preloader-subtext">Seleção de Portugal · Convocatoria Oficial</div>
   </div>
 
   <!-- ===============================================================
@@ -1212,18 +1220,18 @@
   <section id="portadaScreen">
     <div class="portada-badge">
       <span class="star-icon">⭐</span>
-      <span>CONVOCATORIA OFICIAL RFEF</span>
+      <span>CONVOCATORIA OFICIAL FPF · PORTUGAL</span>
       <span class="star-icon">⭐</span>
     </div>
 
     <div class="portada-center">
-      <!-- Escudo estilizado España / Campeones -->
+      <!-- Escudo estilizado Portugal / FPF / CR7 -->
       <svg class="portada-shield" viewBox="0 0 100 120">
         <defs>
           <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#FFC400" />
-            <stop offset="50%" stop-color="#C60B1E" />
-            <stop offset="100%" stop-color="#0B1B3F" />
+            <stop offset="0%" stop-color="#046A38" />
+            <stop offset="50%" stop-color="#C8102E" />
+            <stop offset="100%" stop-color="#8B0014" />
           </linearGradient>
         </defs>
         <!-- Forma de escudo -->
@@ -1231,8 +1239,8 @@
         <!-- Estrella campeones -->
         <polygon points="50,15 54,27 67,27 56,35 60,47 50,39 40,47 44,35 33,27 46,27" fill="#FFE885" />
         <!-- Corona/Texto -->
-        <text x="50" y="70" font-family="'Bebas Neue', sans-serif" font-size="28" fill="#FFFFFF" text-anchor="middle">ESPAÑA</text>
-        <text x="50" y="90" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#FFC400" text-anchor="middle">#19 YAMAL</text>
+        <text x="50" y="70" font-family="'Bebas Neue', sans-serif" font-size="25" fill="#FFFFFF" text-anchor="middle">PORTUGAL</text>
+        <text x="50" y="90" font-family="'Bebas Neue', sans-serif" font-size="18" fill="#FFD100" text-anchor="middle">#7 CR7</text>
       </svg>
 
       <h1 class="portada-title-main">¡ESTÁS CONVOCADO!</h1>
@@ -1273,19 +1281,19 @@
       <!-- Franja superior de Campeones -->
       <div class="card-top-banner">
         <div class="top-banner-text">
-          <span>🇪🇸</span>
+          <span>🇵🇹</span>
           <span>FICHA OFICIAL DE PARTIDO</span>
         </div>
         <div class="stars-champions">★★★★★</div>
       </div>
 
-      <!-- Imagen Afiche Hero (Hovik Gael & Lamine Yamal) -->
+      <!-- Imagen Afiche Hero (Hovik Gael & Cristiano Ronaldo) -->
       <div class="card-hero-media">
-        <img src="fondo.jpg" alt="Hovik Gael y Lamine Yamal - Convocatoria Oficial" id="cardHeroImg" fetchpriority="high" decoding="async">
+        <img src="fondo.jpg" alt="Hovik Gael y Cristiano Ronaldo - Convocatoria Oficial de Portugal" id="cardHeroImg" fetchpriority="high" decoding="async">
         <div class="card-hero-overlay"></div>
         <div class="hero-dorsal-tag">
-          <div class="dorsal-mini-badge" id="badgeDorsal">19</div>
-          <div class="dorsal-tag-text">INSPIRADO EN LAMINE YAMAL</div>
+          <div class="dorsal-mini-badge" id="badgeDorsal">7</div>
+          <div class="dorsal-tag-text">INSPIRADO EN CRISTIANO RONALDO - CR7</div>
         </div>
       </div>
 
@@ -1461,7 +1469,7 @@
         <!-- PIE DE TARJETA -->
         <footer class="card-footer">
           <div class="card-footer-slogan">¡TE ESPERAMOS EN LA CANCHA!</div>
-          <div class="card-footer-sub">Ponte la camiseta de La Roja y ven a festejar</div>
+          <div class="card-footer-sub">Ponte la camiseta de Portugal y ven a festejar</div>
         </footer>
 
       </div>
@@ -1501,7 +1509,7 @@
       // 1. Datos del Cumpleañero
       nombre: "HOVIK GAEL",
       edad: 5,
-      dorsalInspiracion: 19, // Lamine Yamal (dorsal 19 de la Selección Española)
+      dorsalInspiracion: 7, // Cristiano Ronaldo (CR7 - Selección de Portugal)
 
       // 2. Fecha y Hora del Evento
       fechaTexto: "Domingo, 22 de Noviembre",
@@ -1535,11 +1543,11 @@
       // 7. Guion de la narración deportiva (se resalta frase por frase en pantalla)
       guionFrases: [
         "¡Atención, atención! Se viene el partido más importante del año.",
-        "{NOMBRE} cumple {EDAD} años, y tú has sido convocado a la selección de sus invitados.",
+        "{NOMBRE} cumple {EDAD} años, y tú has sido convocado a la selección de sus campeones.",
         "El encuentro será el {FECHA}, a las {HORA}, en {LUGAR}.",
-        "Ponte la camiseta de La Roja, trae tu mejor ánimo y no faltes.",
+        "Ponte la camiseta de Portugal, trae tu mejor ánimo y no faltes.",
         "Confirma tu asistencia tocando el botón de WhatsApp.",
-        "¡Te esperamos!"
+        "¡Te esperamos! ¡Siiiiu!"
       ]
     };
 
@@ -1687,7 +1695,7 @@
         flash.classList.add('flash-active');
       });
 
-      // 3. Disparar confeti con los colores de La Roja (#C60B1E, #FFC400, #D4AF37)
+      // 3. Disparar confeti con los colores de Portugal (#C8102E, #046A38, #FFD100)
       lanzarConfetiCampeones();
 
       // 4. Ocultar portada y remover del flujo táctil para que el scroll sea inmediato
@@ -1797,12 +1805,12 @@
     }
 
     /* ===============================================================
-       LANZAMIENTO DE CONFETI DE CAMPEONES (Rojo, Amarillo y Dorado)
+       LANZAMIENTO DE CONFETI DE CAMPEONES (Rojo, Verde y Dorado de Portugal)
        =============================================================== */
     function lanzarConfetiCampeones() {
       if (typeof confetti !== 'function') return;
 
-      const colores = ['#C60B1E', '#FFC400', '#D4AF37', '#FFFFFF'];
+      const colores = ['#C8102E', '#046A38', '#FFD100', '#FFFFFF'];
 
       // Ráfaga lateral izquierda
       confetti({
@@ -2122,14 +2130,14 @@
       const personas = selectPersonas ? selectPersonas.value : "1";
 
       // Construcción del mensaje solicitado exactamente:
-      // "¡Hola! Soy {nombre} ⚽🇪🇸 Confirmo mi asistencia al cumpleaños de [NOMBRE] el [FECHA]. Vamos {n} persona(s). ¡Nos vemos en la cancha!"
+      // "¡Hola! Soy {nombre} ⚽🇵🇹 Confirmo mi asistencia al cumpleaños de [NOMBRE] el [FECHA]. Vamos {n} persona(s). ¡Nos vemos en la cancha!"
       // Si no escribe nombre, se quita la parte de "Soy {nombre}".
       let encabezado = "¡Hola!";
       if (nombre) {
         encabezado = `¡Hola! Soy ${nombre}`;
       }
 
-      const mensaje = `${encabezado} ⚽🇪🇸 Confirmo mi asistencia al cumpleaños de ${CONFIG.nombre} el ${CONFIG.fechaTexto}. Vamos ${personas} persona(s). ¡Nos vemos en la cancha!`;
+      const mensaje = `${encabezado} ⚽🇵🇹 Confirmo mi asistencia al cumpleaños de ${CONFIG.nombre} el ${CONFIG.fechaTexto}. Vamos ${personas} persona(s). ¡Nos vemos en la cancha!`;
 
       // Obtener el número de destino: si el enlace incluye ?wa= o ?tel=, se envía al WhatsApp de la persona que compartió
       const urlParams = new URLSearchParams(window.location.search);
@@ -2154,8 +2162,8 @@
       }
 
       const fechasFormato = `${formatoGoogleCal(startDate)}/${formatoGoogleCal(endDate)}`;
-      const titulo = `Cumpleaños de ${CONFIG.nombre} (${CONFIG.edad} Años) - Selección de Campeones ⚽🇪🇸`;
-      const detalles = `¡Estás convocado al cumpleaños de ${CONFIG.nombre}! Trae la camiseta de La Roja y tu mejor ánimo. Lugar: ${CONFIG.lugarNombre}, ${CONFIG.direccion}.`;
+      const titulo = `Cumpleaños de ${CONFIG.nombre} (${CONFIG.edad} Años) - Selección de Campeones ⚽🇵🇹`;
+      const detalles = `¡Estás convocado al cumpleaños de ${CONFIG.nombre}! Trae la camiseta de Portugal y tu mejor ánimo. Lugar: ${CONFIG.lugarNombre}, ${CONFIG.direccion}.`;
 
       const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&dates=${fechasFormato}&details=${encodeURIComponent(detalles)}&location=${encodeURIComponent(CONFIG.direccion)}`;
       btnCal.href = calendarUrl;
